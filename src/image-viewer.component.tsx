@@ -308,20 +308,20 @@ export default class ImageViewer extends React.Component<Props, State> {
       toValue: this.positionXNumber,
       duration: this.props.pageAnimateTime,
       useNativeDriver: !!this.props.useNativeDriver
-    }).start();
+    }).start(() => {
+      const nextIndex = (this.state.currentShowIndex || 0) - 1;
 
-    const nextIndex = (this.state.currentShowIndex || 0) - 1;
-
-    this.setState(
-      {
-        currentShowIndex: nextIndex
-      },
-      () => {
-        if (this.props.onChange) {
-          this.props.onChange(this.state.currentShowIndex);
+      this.setState(
+        {
+          currentShowIndex: nextIndex
+        },
+        () => {
+          if (this.props.onChange) {
+            this.props.onChange(this.state.currentShowIndex);
+          }
         }
-      }
-    );
+      );
+    });
   };
 
   /**
@@ -342,20 +342,20 @@ export default class ImageViewer extends React.Component<Props, State> {
       toValue: this.positionXNumber,
       duration: this.props.pageAnimateTime,
       useNativeDriver: !!this.props.useNativeDriver
-    }).start();
+    }).start(() => {
+      const nextIndex = (this.state.currentShowIndex || 0) + 1;
 
-    const nextIndex = (this.state.currentShowIndex || 0) + 1;
-
-    this.setState(
-      {
-        currentShowIndex: nextIndex
-      },
-      () => {
-        if (this.props.onChange) {
-          this.props.onChange(this.state.currentShowIndex);
+      this.setState(
+        {
+          currentShowIndex: nextIndex
+        },
+        () => {
+          if (this.props.onChange) {
+            this.props.onChange(this.state.currentShowIndex);
+          }
         }
-      }
-    );
+      );
+    });
   };
 
   /**
